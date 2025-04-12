@@ -22,6 +22,7 @@ public class MagicMirrorState implements AbstractMagicMirrorState{
 
     private final float[] sensitivities = {0.5F, 0.5F};
     private final Rhino rhino;
+    private final String accessKey;
 
     public MagicMirrorState(String accessKey) throws PorcupineException, RhinoException, IOException {
         this(8, accessKey);
@@ -29,6 +30,7 @@ public class MagicMirrorState implements AbstractMagicMirrorState{
 
     public MagicMirrorState(int audioDeviceIndex, String accessKey) throws RhinoException, IOException {
         this.audioDeviceIndex = audioDeviceIndex;
+        this.accessKey = accessKey;
         try {
             rhino = new Rhino.Builder()
                     .setAccessKey(accessKey)
@@ -96,10 +98,10 @@ public class MagicMirrorState implements AbstractMagicMirrorState{
                     RhinoInference inference = rhino.getInference();
                     if (inference.getIsUnderstood()) {
                         System.out.println("Is understood");
-                        return new MagicMirrorAnswerState();
+                        return new MagicMirrorAnswerState(accessKey);
                     } else {
                         System.out.println("Is not understood");
-                        return new WaitingForKeywordState();
+                        return new WaitingForKeywordState(accessKey);
                     }
                 }
             }

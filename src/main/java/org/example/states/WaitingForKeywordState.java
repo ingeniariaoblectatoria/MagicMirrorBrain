@@ -116,7 +116,7 @@ public class WaitingForKeywordState implements AbstractMagicMirrorState{
         }
         if (nextState == null){
             System.err.println("next state error");
-            return new WaitingForKeywordState();
+            return new WaitingForKeywordState(accessKey);
         }
         return nextState;
     }
