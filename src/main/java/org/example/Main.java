@@ -35,7 +35,7 @@ public class Main {
         StompSession stompSession = test.get();
         System.out.println("connected");
 
-        String accessKey = args[1];
+        String accessKey = args[0];
 
         MagicMirrorContext context = new MagicMirrorContext(accessKey);
         sessionHandler.setMagicMirrorContext(context);
