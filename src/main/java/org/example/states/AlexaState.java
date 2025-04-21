@@ -25,9 +25,7 @@ public class AlexaState implements AbstractMagicMirrorState {
             Robot robot = new Robot();
 
             // Simulate a key press
-            robot.keyPress(KeyEvent.VK_A);
-            TimeUnit.SECONDS.sleep(5);
-            robot.keyRelease(KeyEvent.VK_A);
+            Runtime.getRuntime().exec("wtype A");
         } catch (AWTException e) {
             e.printStackTrace();
         }
