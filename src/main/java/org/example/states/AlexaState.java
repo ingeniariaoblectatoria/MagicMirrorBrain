@@ -21,14 +21,8 @@ public class AlexaState implements AbstractMagicMirrorState {
     public synchronized AbstractMagicMirrorState getNextState() throws PorcupineException, InterruptedException, IOException {
         System.out.println("Alexa state");
 
-        try {
-            Robot robot = new Robot();
+        Runtime.getRuntime().exec("wtype A");
 
-            // Simulate a key press
-            Runtime.getRuntime().exec("wtype A");
-        } catch (AWTException e) {
-            e.printStackTrace();
-        }
 
         while (next_state == null){
             wait();
